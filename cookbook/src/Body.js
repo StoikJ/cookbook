@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 
 function Body() {
     const[items, setitems]= useState([])
