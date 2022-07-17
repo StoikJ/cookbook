@@ -1,37 +1,38 @@
-//import React, { useEffect, useState } from "react";
-//import axios from "axios";
-//import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-//const [items, setitems] = useState([]);
 
-//function Body() {
-  //useEffect(() => {
-    //axios
-      //.get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
-      //.then((res) => {
-        //console.log(res.data);
+const [items, setitems] = useState([]);
 
-        //setitems(res.data.meals);
-      //})
-      //.catch((err) => {
-        //console.log(err);
-     // });
-  //}, []);
+function Body() {
+  useEffect(() => {
+    axios
+      .get("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
+      .then((res) => {
+        console.log(res.data);
 
-  //const itemsist=items.map((obj) => {
-   // return (
-     //  <p>{obj.strMeal}</p>
-       // <img src={obj.strMealThumb} className="img-fluid" />
-        //<p>{obj.idMeal}</p>
-      //</div>
-    //);
-  //});
+        setitems(res.data.meals);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-  //return (
-    //<div>
-      //<div className="row">{itemslist}</div>
-    //</div>
-  //);
-//}
+  const itemslist=items.map((obj) => {
+    return (
+      <div>
+       <p>{obj.strMeal}</p>
+        <img src={obj.strMealThumb} className="img-fluid" />
+        <p>{obj.idMeal}</p>
+      </div>
+    );
+  });
 
-//export default Body;
+  return (
+    <div>
+      <div className="row">{itemslist}</div>
+    </div>
+  );
+}
+
+export default Body;
