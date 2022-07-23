@@ -1,16 +1,21 @@
-import LoginHeader from "../components/LoginHeader"
-import Login from "../components/Login"
+import LoginHeader from "../components/LoginHeader";
+import Login from "../components/Login";
+import GlobalHeader from "../components/GlobalHeader";
 
-export default function LoginPage(){
-    return(
+export default function LoginPage() {
+  return (
+    <><GlobalHeader></GlobalHeader><div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8">
         <>
-             <LoginHeader
-                heading="Login to your account"
-                paragraph="Don't have an account yet? "
-                linkName="Signup"
-                linkUrl="/signup"
-                />
-            <Login/>
+          <LoginHeader
+            heading="Login to your account"
+            paragraph="Don't have an account yet? "
+            linkName="Signup"
+            linkUrl="/signup" />
+          <Login />
         </>
-    )
+      </div>
+    </div></>
+    
+  );
 }

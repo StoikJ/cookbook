@@ -1,9 +1,10 @@
 import React from "react";
 
-const Recipe = ({ title, calories, image, ingredients, url }) => {
-  return (
-    <div class="flex flex-row items-start ">
-      <div class="flex flex-col items-start col-span-12 space-y-3 sm:col-span-6 xl:col-span-4">
+export default function Recipe ({ title, calories, image, ingredients, url }) {
+  return (<>
+  <section class=" h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden body-font">
+    <div class="flex flex-wrap ">
+      <div class="flex flex-col items-start col space-y-3 sm:col-span-6 xl:col-span-4">
         <a href={url} class="block">
           <img
             class="object-cover w-full mb-2 overflow-hidden rounded-lg max-h-56"
@@ -25,6 +26,7 @@ const Recipe = ({ title, calories, image, ingredients, url }) => {
         </p>
       </div>
     </div>
-  );
+   
+  </section> </>);
 };
-export default Recipe;
+
