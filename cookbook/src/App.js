@@ -1,22 +1,17 @@
-import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
-import SignupPage from './pages/Signup';
-import LoginPage from './pages/Login';
-import Recipe from './pages/Recipe'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignupPage from "./pages/Signup";
+import LoginPage from "./pages/Login";
+import Recipe from "./pages/Recipe";
 
 function App() {
   return (
-     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<LoginPage/>} />
-            <Route path="/signup" element={<SignupPage/>} />
-            <Route path="/recipe" element={<Recipe/>}  />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/recipe" element={<Recipe />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -1,3 +1,4 @@
+
 export default function GlobalHeader() {
   return (
     <header class="text-gray-600 body-font">
@@ -21,6 +22,7 @@ export default function GlobalHeader() {
           <a class="mr-5 hover:text-gray-900" href="/">Login</a>
           <a class="mr-5 hover:text-gray-900" href="/recipe">Recipe Search</a>
           <a class="mr-5 hover:text-gray-900" href=" #">Favorites</a>
+          
         </nav>
       </div>
     </header>

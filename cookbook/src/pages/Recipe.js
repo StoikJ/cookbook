@@ -32,8 +32,9 @@ export default function RecipePage() {
   return (
     <>
       <GlobalHeader />
-      <div class="container pl-8 w-screen h-full y-space-2">
-        <form class="flex mt-8 " onSubmit={getSearch}>
+      <div class="container pl-5 w-screen h-full y-space-2 space-y-7 >">
+
+      <form class="flex mt-8 " onSubmit={getSearch}>
           <input
             class="w-3/4 col bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             type="text"
@@ -47,7 +48,8 @@ export default function RecipePage() {
             Search
           </button>
         </form>
-        <div class="grid grid-cols-6 ">
+        
+        <div class="grid grid-cols-5 py-px space-x-5  >">
           {recipes.map((recipe) => (
             <Recipe
               url={recipe.recipe.url}
