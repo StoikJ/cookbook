@@ -12,12 +12,12 @@ export default function Recipe ({ title, calories, image, ingredients, url }) {
             src={image}
           />
         </a>
-        <div class="bg-yellow-400 items-center px-3 py-1.5 leading-none rounded-full text-xs font-medium uppercase text-white inline-block">
+        <div class=" bg-orange-600 items-center px-3 py-1.5 leading-none rounded-full text-xs font-medium uppercase text-white inline-block">
           <span>Nutrition</span>
         </div>
         <h2 class="text-lg font-bold sm:text-xl md:text-2xl">{title}</h2>
         <ol class="list text-sm text-black-500">
-          {ingredients.map((ingredient) => (
+          {ingredients.slice(0,5).map((ingredient) => (
             <li>{ingredient.text}</li>
           ))}
         </ol>
