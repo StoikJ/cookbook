@@ -8,7 +8,7 @@ import SignupPage from './pages/Signup';
 import LoginPage from './pages/Login';
 import Recipe from './pages/Recipe'
 
-function App() {
+export default function App() {
   return (
      <BrowserRouter>
         <Routes>
@@ -29,4 +29,4 @@ function App() {
   );
 }*/
 
-export default App;
+
