@@ -1,4 +1,4 @@
-/*
+
 import { getFirestore } from "firebase/firestore"
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -26,4 +26,3 @@ const db = getFirestore(app)
 const analytics = getAnalytics(app);
 
 export {db}
-*/
