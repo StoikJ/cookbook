@@ -35,6 +35,7 @@ const firebaseConfig = {
 };
 
 const signInWithGoogle = async () => {
+  preventDefault();
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
