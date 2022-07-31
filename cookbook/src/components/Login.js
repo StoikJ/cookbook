@@ -1,4 +1,4 @@
-import { signInWithGoogle, auth, logInWithEmailAndPassword } from "../firebase";
+import { googleLogin, auth, logInWithEmailAndPassword } from "../firebase";
 import { useEffect, useState } from "react";
 import { loginFields } from "../constants/FormFields";
 import FormAction from "./FormAction";
@@ -13,7 +13,7 @@ let fieldsState = {};
 fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Login() {
- 
+
   const [user, loading, error] = useAuthState(auth);
   const [loginState, setLoginState] = useState(fieldsState);
   const navigate = useNavigate();
@@ -34,7 +34,8 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = e.target.elements;
-    try {logInWithEmailAndPassword(email.value, password.value);
+    try {
+      logInWithEmailAndPassword(email.value, password.value);
       console.log(email.value, password.value);
     } catch (error) {
       alert(error);
@@ -64,6 +65,8 @@ export default function Login() {
 
         <FormExtra />
         <FormAction handleSubmit={handleSubmit} text="Login" />
+        <button onClick={googleLogin} className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mt-10"
+        >Google</button>
       </form>
 
     </>

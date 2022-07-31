@@ -19,6 +19,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -34,26 +35,17 @@ const firebaseConfig = {
   measurementId: "G-3EQV4YMSKZ"
 };
 
-const signInWithGoogle = async () => {
+const googleLogin = (e) => {
+  e.preventDefault();
+  signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      //window.location.href = "/";
+      console.log("I am logged with Google");
+    }).catch((error) => {
+      console.log(error.message);
+    })
+}
 
-  try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "google",
-        email: user.email,
-      });
-    }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -87,13 +79,15 @@ const sendPasswordReset = async (email) => {
   }
 };
 const logout = () => {
+
   signOut(auth);
+
 };
 export {
   firebaseConfig,
   auth,
   db,
-  signInWithGoogle,
+  googleLogin,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordReset,
@@ -101,8 +95,9 @@ export {
 };
 
 // Initialize Firebase
-const googleProvider = new GoogleAuthProvider();
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider(app);
 const db = getFirestore(app);
 const analytics = getAnalytics(app);
