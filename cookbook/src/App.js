@@ -4,7 +4,7 @@ import LoginPage from "./pages/Login";
 import Recipe from "./pages/Recipe";
 import ShoppingList from "./pages/ShoppingList"
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -26,4 +26,4 @@ function App() {
   );
 }*/
 
-export default App;
+
