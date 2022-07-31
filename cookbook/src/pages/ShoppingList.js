@@ -1,32 +1,107 @@
-import React from 'react'
-function ShoppingList(){
-    return(
-        <div class="ShoppingList">
-            <div class="bg-indigo-100 h-screen">
-  
-  <div>
-    <h2 class="bg-indigo-500 text-gray-50 text-center max-w-2xl text-5xl shadow-xl font-medium m-auto mt-5 p-5 rounded-lg" >Shopping List</h2>
-  </div>
+import React from 'react';
+import GlobalHeader from "../components/GlobalHeader";
 
-  <div class="grid justify-items-center">
-    <div class="bg-white text-center m-5 rounded-xl p-6 w-2/6">
-      <div class="flex justify-between space-x-5">
-        <h5 class="font-sans font-semibold text-2xl">Chicken</h5>
-        <button class="bg-red-600 hover:bg-red-800 text-white rounded font-medium">Remove Item</button>
-      </div>
-    </div>
-  </div>
-  <div class="flex justify-center">
-    <form>
-      <div class="space-x-5">
-          <input placeholder="Grocery Item" type="text" class="pl-2 p-2 border-2 border-indigo-300 rounded w-64"/>
-          <button type="submit" class="bg-green-600 hover:bg-green-800 text-white rounded font-medium">Add New Item</button>
-      </div>
-    </form>
-  </div>
-</div>
+
+class ShoppingList extends React.Component {
+
+    state = {
+        input: '',
+        items: [
+            'Chicken',
+            'Lamb',
+            'Black pepper'
+        ]
+
+    }
+
+    constructor(props) {
+        super(props);
+        this.addItem = this.addItem.bind(this);
+        this.handleInput = this.handleInput.bind(this)
+        this.removeItem = this.removeItem.bind(this)
+    }
+
+    addItem(event) {
+        this.setState((state) => (
+            {
+                items: state.items.concat(this.state.concat)
+            }
+        ))
+        event.preventDefault();
+    }
+
+    removeItem(event) {
+        let newList = this.state.items;
+        newList.pop();
+
+        this.setState((state) => (
+            { items: newList }
+        ))
+    }
+
+    handleInput(event) {
+        this.setState(({
+            input: event.target.value
+        }))
+    }
+
+    render() {
+
+
+
+
+
+
+
+        return (
+            
+            <div className="ShoppingList bg-indigo-100 h-screen">
+                <GlobalHeader />
+                <div className="">
+
+
+                    <h2 className="bg-indigo-500 text-gray-50 text-center max-w-2xl text-5xl shadow-xl font-medium m-auto mt-5 p-5 rounded-lg" >Shopping List</h2>
+                    <List items={this.state.items} removeItem={this.removeItem}></List>
+
+
+                    <div className="flex justify-center">
+                        <form onSubmit={this.addItem}>
+                            <div className="space-x-5">
+                                <input onChange={this.handleInput} placeholder="Grocery Item" type="text" className="pl-2 p-2 border-2 border-indigo-300 rounded w-64" />
+                                <button type="submit" className="bg-green-600 hover:bg-green-800 text-white rounded font-medium">Add New Item</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+}
+function List(props) {
+    return (
+        <div className="grid justify-items-center">
+            {props.items.map((item, index) => {
+                return (
+                    <Item removeItem={props.removeItem} name={item} key={index}></Item>
+                )
+            })}
         </div>
     )
 }
+
+function Item(props) {
+    return (
+        <div className="bg-white text-center m-5 rounded-xl p-6 w-2/6">
+            <div className="flex justify-between space-x-5">
+                <h5 className="font-sans font-semibold text-2xl">{props.name}</h5>
+                <button onClick={props.removeItem} className="bg-red-600 hover:bg-red-800 text-white rounded font-medium">Remove Item</button>
+            </div>
+        </div>
+
+    )
+}
+
+
 
 export default ShoppingList
