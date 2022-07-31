@@ -54,13 +54,12 @@ class ShoppingList extends React.Component {
 
 
         return (
-            
-            <div className="ShoppingList bg-indigo-100 h-screen">
-                <GlobalHeader />
+            <><GlobalHeader /><div className="ShoppingList bg-indigo-100 h-screen">
+
                 <div className="">
 
 
-                    <h2 className="bg-indigo-500 text-gray-50 text-center max-w-2xl text-5xl shadow-xl font-medium m-auto mt-5 p-5 rounded-lg" >Shopping List</h2>
+                    <h2 className="bg-indigo-500 text-gray-50 text-center max-w-2xl text-5xl shadow-xl font-medium m-auto mt-5 p-5 rounded-lg">Shopping List</h2>
                     <List items={this.state.items} removeItem={this.removeItem}></List>
 
 
@@ -73,7 +72,7 @@ class ShoppingList extends React.Component {
                         </form>
                     </div>
                 </div>
-            </div>
+            </div></>
         )
     }
 
